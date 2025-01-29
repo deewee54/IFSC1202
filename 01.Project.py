@@ -1,3 +1,12 @@
 time = int(input("Length of Time in Seconds: "))
+years = (time // 31536000)
+days = (years % time // 86400)
+hours = (days % time // 3600)
+minutes = (hours % time // 60)
+seconds = (minutes % 60)
+
 print("Years:",years)
-print()
+print("Days:",days)
+print("Hours:",hours)
+print("Minutes:",minutes)
+print("Seconds:",seconds)

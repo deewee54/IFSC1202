@@ -1,3 +1,3 @@
 number = int(input("Enter a number: "))
-
-print(f"Last Digit: {number:f}")
+number = number % 10
+print("Last Digit:", number)

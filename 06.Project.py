@@ -8,18 +8,27 @@ input_count = 0
 merge_count = 0
 output_count = 0
 
+# Open files manually
+input_file = open(input_file_path, "r")
+merge_file = open(merge_file_path, "r")
+output_file = open(output_file_path, "w")
+
 # Read and merge files
-with open(input_file_path, "r") as input_file, open(merge_file_path, "r") as merge_file, open(output_file_path, "w") as output_file:
-    for line in input_file:
-        input_count += 1
-        if "**Insert Merge File Here**" in line:
-            for merge_line in merge_file:
-                output_file.write(merge_line)
-                merge_count += 1
-                output_count += 1
-        else:
-            output_file.write(line)
+for line in input_file:
+    if line.strip() == "**Insert Merge File Here**":
+        for merge_line in merge_file:
+            output_file.write(merge_line)
+            merge_count += 1
             output_count += 1
+    else:
+        output_file.write(line)
+        input_count += 1
+        output_count += 1
+
+# Close all files
+input_file.close()
+merge_file.close()
+output_file.close()
 
 # Print the results
 print(f"{input_count} input file records")
